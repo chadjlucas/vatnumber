@@ -56,6 +56,8 @@ def check_vat_be(vat):
     '''
     if len(vat) != 10:
         return False
+    if vat[0] != '0':
+        return False
     try:
         int(vat)
     except ValueError:
