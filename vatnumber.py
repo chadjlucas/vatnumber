@@ -986,3 +986,9 @@ def check_vat_sk(vat):
         if int(vat[4:6]) < 1 or int(vat[4:6]) > 31:
             return False
     return True
+
+def check_vat_uk(vat):
+    '''
+    Check United Kingdom VAT number.
+    '''
+    return check_vat_gb(vat)
