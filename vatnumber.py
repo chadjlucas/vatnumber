@@ -3,6 +3,7 @@
 '''
 Check the VAT number depending of the country based on formula from
 http://sima-pc.com/nif.php
+http://en.wikipedia.org/wiki/Vat_number
 '''
 
 __version__ = '0.1'
@@ -47,6 +48,22 @@ def check_vat_at(vat):
     if check == 10:
         check = 0
     if int(vat[-1:]) != check:
+        return False
+    return True
+
+def check_vat_al(vat):
+    '''
+    Check Albania VAT number.
+    '''
+    if len(vat) != 10:
+        return False
+    if vat[0] not in ('J', 'K'):
+        return False
+    try:
+        int(vat[1:9])
+    except ValueError:
+        return False
+    if ord(vat[9]) < 65 and ord(vat[9]) > 90:
         return False
     return True
 
