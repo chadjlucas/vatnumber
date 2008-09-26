@@ -1006,6 +1006,18 @@ def check_vat_sk(vat):
             return False
     return True
 
+def check_vat_sm(vat):
+    '''
+    Check San Marino VAT number.
+    '''
+    if len(vat) != 5:
+        return False
+    try:
+        int(vat)
+    except ValueError:
+        return False
+    return True
+
 def check_vat_uk(vat):
     '''
     Check United Kingdom VAT number.
