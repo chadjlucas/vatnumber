@@ -1018,6 +1018,18 @@ def check_vat_sm(vat):
         return False
     return True
 
+def check_vat_ua(vat):
+    '''
+    Check Ukraine VAT number.
+    '''
+    if len(vat) != 8:
+        return False
+    try:
+        int(vat)
+    except ValueError:
+        return False
+    return True
+
 def check_vat_uk(vat):
     '''
     Check United Kingdom VAT number.
