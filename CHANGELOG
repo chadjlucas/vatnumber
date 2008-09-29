@@ -1,0 +1,9 @@
+Version 0.2 - 2008-09-29
+* Add check_vat_uk function
+* Improve Belgium vat check as first number must be 0
+* Add Check Albania VAT number
+* Add Check San Marino VAT number
+* Add Check Ukraine VAT number
+
+Version 0.1 - 2008-09-20
+* Initial release

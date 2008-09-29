@@ -6,7 +6,7 @@ http://sima-pc.com/nif.php
 http://en.wikipedia.org/wiki/Vat_number
 '''
 
-__version__ = '0.1'
+__version__ = '0.2'
 
 def countries():
     '''
