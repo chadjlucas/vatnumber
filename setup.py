@@ -24,4 +24,5 @@ setup(name='vatnumber',
             'Topic :: Software Development :: Libraries :: Python Modules',
             ],
         license='GPL-3',
+        test_suite="tests",
     )
