@@ -2,7 +2,7 @@
 #This file is part of vatnumber.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-from distutils.core import setup
+from setuptools import setup
 import vatnumber
 
 setup(name='vatnumber',
