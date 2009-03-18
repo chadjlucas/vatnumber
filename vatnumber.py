@@ -873,7 +873,8 @@ def check_vat_ro(vat):
     except ValueError:
         return False
 
-    if len(vat) == 10:
+    if len(vat) >= 2 and len(vat) <= 10:
+        vat = (10 - len(vat)) * '0' + vat
         check_sum = 7 * int(vat[0]) + 5 * int(vat[1]) + 3 * int(vat[2]) + \
                 2 * int(vat[3]) + 1 * int(vat[4]) + 7 * int(vat[5]) + \
                 5 * int(vat[6]) + 3 * int(vat[7]) + 2 * int(vat[8])

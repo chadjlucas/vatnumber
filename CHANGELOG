@@ -1,3 +1,5 @@
+* Fix check_vat_ro for vat number with less than 10 digits
+
 Version 0.2 - 2008-09-29
 * Add check_vat_uk function
 * Improve Belgium vat check as first number must be 0
