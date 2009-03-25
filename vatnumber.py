@@ -88,6 +88,9 @@ def check_vat_bg(vat):
     '''
     Check Bulgaria VAT number.
     '''
+    if len(vat) == 9:
+        #XXX don't know any rules for this length
+        return True
     if len(vat) != 10:
         return False
     try:
