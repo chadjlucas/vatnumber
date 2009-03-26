@@ -348,7 +348,7 @@ def check_vat_es(vat):
         23: 'E',
     }
 
-    if vat[0] in ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'):
+    if vat[0] in ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'U', 'V'):
         try:
             int(vat[1:])
         except ValueError:
@@ -363,7 +363,7 @@ def check_vat_es(vat):
         if check != int(vat[8]):
             return False
         return True
-    elif vat[0] in ('N', 'P', 'Q', 'S'):
+    elif vat[0] in ('N', 'P', 'Q', 'R', 'S', 'W'):
         try:
             int(vat[1:8])
         except ValueError:
@@ -377,12 +377,19 @@ def check_vat_es(vat):
         if check != vat[8]:
             return False
         return True
-    elif vat[0] in ('K', 'L', 'M', 'X'):
+    elif vat[0] in ('K', 'L', 'M', 'X', 'Y', 'Z'):
+        if vat[0] == 'Y':
+            check_value = '1' + vat[1:8]
+        elif vat[0] == 'Z':
+            check_value = '2' + vat[1:8]
+        else:
+            check_value = vat[1:8]
+
         try:
-            int(vat[1:8])
+            int(check_value)
         except ValueError:
             return False
-        check = 1 + (int(vat[1:8]) % 23)
+        check = 1 + (int(check_value) % 23)
 
         check = conv[check]
         if check != vat[8]:
