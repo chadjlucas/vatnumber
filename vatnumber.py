@@ -7,6 +7,7 @@ http://en.wikipedia.org/wiki/Vat_number
 '''
 
 __version__ = '0.3'
+VIES_URL='http://ec.europa.eu/taxation_customs/vies/api/checkVatPort?wsdl'
 
 def countries():
     '''
@@ -1039,3 +1040,14 @@ def check_vat_uk(vat):
     Check United Kingdom VAT number.
     '''
     return check_vat_gb(vat)
+
+def check_vies(vat):
+    '''
+    Check VAT number for EU member state using the SOAP Service
+    '''
+    from SOAPpy import WSDL
+    code = vat[:2]
+    number = vat[2:]
+    server = WSDL.Proxy(VIES_URL)
+    res = server.checkVat(code, number)
+    return bool(res['valid'])
