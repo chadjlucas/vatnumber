@@ -869,7 +869,7 @@ def check_vat_pt(vat):
             6 * int(vat[3]) + 5 * int(vat[4]) + 4 * int(vat[5]) + \
             3 * int(vat[6]) + 2 * int(vat[7])
     check = 11 - (check_sum % 11)
-    if check == 10:
+    if check == 10 or check == 11:
         check = 0
     if check != int(vat[8]):
         return False
