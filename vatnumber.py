@@ -113,6 +113,26 @@ def check_vat_bg(vat):
         return False
     return True
 
+def check_vat_co(rut):
+    '''
+    Check Colombian RUT number.
+    '''
+    if len(str(rut)) != 10:
+        return False
+    try:
+        int(rut)
+    except ValueError:
+        return False
+    nums = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71]
+    sum = 0
+    RUTLen = len(str(rut))
+    for i in range (RUTLen - 2, -1, -1):
+        sum += int(str(rut)[i]) * nums [RUTLen - 2 - i]
+    if sum % 11 > 1:
+         return str(rut)[RUTLen - 1] == str(11 - (sum % 11))
+    else:
+         return str(rut)[RUTLen - 1] == str(sum % 11)
+
 def check_vat_cy(vat):
     '''
     Check Cyprus VAT number.
