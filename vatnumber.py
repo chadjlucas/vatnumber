@@ -113,6 +113,26 @@ def check_vat_bg(vat):
         return False
     return True
 
+def check_vat_cl(rut):
+    '''
+    Check Chile RUT number.
+    '''
+    try:
+        int(str(rut)[:len(str(rut))-1])
+    except ValueError:
+        return False
+    sum = 0
+    RUTLen = len(str(rut))
+    for i in range (RUTLen - 2, -1, -1):
+        sum += int(str(rut)[i]) * (((RUTLen - 2 - i) % 6) + 2)
+    check = 11 - (sum % 11)
+    if check == 11:
+        return str(rut)[len(str(rut)) -1] == '0'
+    elif check == 10:
+        return str(rut)[len(str(rut)) -1].upper() == 'K'
+    else:
+        return str(check) == str(rut)[len(str(rut)) -1]
+
 def check_vat_co(rut):
     '''
     Check Colombian RUT number.
