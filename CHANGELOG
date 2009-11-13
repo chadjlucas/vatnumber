@@ -1,3 +1,8 @@
+Version 0.5 - 2009-11-13
+* Add Check Chile RUT number for issue5
+* Add Check Colombian RUT number for issue4
+* Fix Portugal VAT when check number is 11
+
 Version 0.4 - 2009-03-30
 * Update Spain test for issue3 thanks to carlos@pemas.es
 * Add VIES check with the SOAP Service of EU
