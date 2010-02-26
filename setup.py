@@ -2,7 +2,7 @@
 #This file is part of vatnumber.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-from setuptools import setup
+from setuptools import setup, find_packages
 import vatnumber
 
 setup(name='vatnumber',
@@ -12,7 +12,7 @@ setup(name='vatnumber',
         url="http://code.google.com/p/vatnumber/",
         description="Python module to validate VAT numbers",
         download_url="http://code.google.com/p/vatnumber/downloads/",
-        py_modules=['vatnumber'],
+        packages=find_packages(),
         classifiers=[
             'Development Status :: 5 - Production/Stable',
             'Intended Audience :: Developers',
@@ -24,5 +24,5 @@ setup(name='vatnumber',
             'Topic :: Software Development :: Libraries :: Python Modules',
             ],
         license='GPL-3',
-        test_suite="tests",
+        test_suite="vatnumber.tests",
     )
