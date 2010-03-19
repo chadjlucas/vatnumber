@@ -77,6 +77,10 @@ VAT_NUMBERS = [
     ('UA', '12345678'),
 ]
 
+VIES_NUMBERS = [
+    'BE0897290877',
+]
+
 
 class VatNumberTest(unittest.TestCase):
     '''
@@ -90,6 +94,13 @@ class VatNumberTest(unittest.TestCase):
         for code, number in VAT_NUMBERS:
             self.assert_(getattr(vatnumber,
                 'check_vat_' + code.lower())(number), code + ' ' + number)
+
+    def test_vies(self):
+        '''
+        Test vies
+        '''
+        for vat in VIES_NUMBERS:
+            self.assert_(vatnumber.check_vies(vat))
 
 if __name__ == '__main__':
     unittest.main()
