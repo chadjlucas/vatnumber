@@ -536,7 +536,44 @@ def check_vat_gb(vat):
                 return False
             return True
         return False
-    elif len(vat) in (9, 10):
+    elif len(vat) == 11 \
+            and vat[0:6] in ('GD8888', 'HA8888'):
+        try:
+            int(vat[6:11])
+        except ValueError:
+            return False
+        if vat[0:2] == 'GD' \
+                and int(vat[6:9]) >= 500:
+            return False
+        elif vat[0:2] == 'HA' \
+                and int(vat[6:9]) < 500:
+            return False
+        if int(vat[6:9]) % 97 == int(vat[9:11]):
+            return True
+        return False
+    elif len(vat) in (12, 13) \
+            and vat[0:3] in ('000', '001'):
+        try:
+            int(vat)
+        except ValueError:
+            return False
+
+        if int(vat[3:10]) < 1:
+            return False
+        if int(vat[3:10]) > 19999 and int(vat[3:10]) < 1000000:
+            return False
+        if int(vat[10:12]) > 97:
+            return False
+        if len(vat) == 13 and int(vat[12]) != 3:
+            return False
+
+        check_sum = 8 * int(vat[3]) + 7 * int(vat[4]) + 6 * int(vat[5]) + \
+                5 * int(vat[6]) + 4 * int(vat[7]) + 3 * int(vat[8]) + \
+                2 * int(vat[9]) + 10 * int(vat[10]) + int(vat[11])
+        if check_sum % 97 != 0:
+            return False
+        return True
+    elif len(vat) in (9, 10, 12):
         try:
             int(vat)
         except ValueError:
@@ -554,30 +591,6 @@ def check_vat_gb(vat):
         check_sum = 8 * int(vat[0]) + 7 * int(vat[1]) + 6 * int(vat[2]) + \
                 5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
                 2 * int(vat[6]) + 10 * int(vat[7]) + int(vat[8])
-        if check_sum % 97 != 0:
-            return False
-        return True
-    elif len(vat) in (12, 13):
-        try:
-            int(vat)
-        except ValueError:
-            return False
-
-        if int(vat[0:3]) not in (0, 1):
-            return False
-
-        if int(vat[3:10]) < 1:
-            return False
-        if int(vat[3:10]) > 19999 and int(vat[3:10]) < 1000000:
-            return False
-        if int(vat[10:12]) > 97:
-            return False
-        if len(vat) == 13 and int(vat[12]) != 3:
-            return False
-
-        check_sum = 8 * int(vat[3]) + 7 * int(vat[4]) + 6 * int(vat[5]) + \
-                5 * int(vat[6]) + 4 * int(vat[7]) + 3 * int(vat[8]) + \
-                2 * int(vat[9]) + 10 * int(vat[10]) + int(vat[11])
         if check_sum % 97 != 0:
             return False
         return True
