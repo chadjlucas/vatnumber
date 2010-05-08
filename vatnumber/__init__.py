@@ -1141,10 +1141,9 @@ def check_vies(vat):
     '''
     Check VAT number for EU member state using the SOAP Service
     '''
-    from SOAPpy import WSDL, SOAPConfig
+    from suds.client import Client
+    client = Client(VIES_URL)
     code = vat[:2]
     number = vat[2:]
-    server = WSDL.Proxy(VIES_URL, config=SOAPConfig(
-        argsOrdering={'checkVat': ['countryCode', 'vatNumber']}))
-    res = server.checkVat(countryCode=code, vatNumber=number)
+    res = client.service.checkVat(countryCode=code, vatNumber=number)
     return bool(res['valid'])

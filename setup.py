@@ -24,5 +24,8 @@ setup(name='vatnumber',
             'Topic :: Software Development :: Libraries :: Python Modules',
             ],
         license='GPL-3',
+        extras_require={
+            'suds': ['suds'],
+        },
         test_suite="vatnumber.tests",
     )

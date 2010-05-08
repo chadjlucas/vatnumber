@@ -1,3 +1,4 @@
+* Replace SOAPpy by suds
 * Add GB validation for {GB,HA}888 8xxx yy format
 * Add GB validation for branch traders 12 digits
 * Update vies SOAP URL and add unittest
