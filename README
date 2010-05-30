@@ -19,6 +19,6 @@ Here a simple example to validate European VAT through VIES service::
     True
 
 
-For more information please visit the `vatnumber website_`.
+For more information please visit the `vatnumber website`_.
 
 .. _vatnumber website: http://code.google.com/p/vatnumber/
