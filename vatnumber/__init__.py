@@ -6,7 +6,7 @@ http://sima-pc.com/nif.php
 http://en.wikipedia.org/wiki/Vat_number
 '''
 
-__version__ = '0.6'
+__version__ = '0.7'
 VIES_URL='http://ec.europa.eu/taxation_customs/vies/services/checkVatService.wsdl'
 
 def countries():
