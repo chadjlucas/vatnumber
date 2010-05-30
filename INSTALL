@@ -5,7 +5,7 @@ Prerequisites
 -------------
 
  * Python (http://www.python.org/)
- * SOAPpy (http://pywebsvcs.sourceforge.net/)
+ * suds (https://fedorahosted.org/suds/)
 
 Installation
 ------------
