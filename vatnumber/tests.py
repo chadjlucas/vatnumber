@@ -95,8 +95,7 @@ class VatNumberTest(unittest.TestCase):
         Test VAT numbers
         '''
         for code, number in VAT_NUMBERS:
-            self.assert_(getattr(vatnumber,
-                'check_vat_' + code.lower())(number), code + ' ' + number)
+            self.assert_(vatnumber.check_vat(code + number), code + number)
 
     def test_vies(self):
         '''

@@ -1137,6 +1137,14 @@ def check_vat_ru(vat):
             return False
     return True
 
+def check_vat(vat):
+    '''
+    Check VAT number.
+    '''
+    code = vat[:2].lower()
+    number = vat[2:]
+    return globals()['check_vat_%s' % code](number)
+
 def check_vies(vat):
     '''
     Check VAT number for EU member state using the SOAP Service
