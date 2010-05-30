@@ -2,8 +2,12 @@
 #This file is part of vatnumber.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
+import os
 from setuptools import setup, find_packages
 import vatnumber
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(name='vatnumber',
         version=vatnumber.__version__,
@@ -11,6 +15,7 @@ setup(name='vatnumber',
         author_email='info@b2ck.com',
         url="http://code.google.com/p/vatnumber/",
         description="Python module to validate VAT numbers",
+        long_description=read('README'),
         download_url="http://code.google.com/p/vatnumber/downloads/",
         packages=find_packages(),
         classifiers=[
