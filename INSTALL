@@ -5,7 +5,7 @@ Prerequisites
 -------------
 
  * Python (http://www.python.org/)
- * suds (https://fedorahosted.org/suds/)
+ * Optional: suds (https://fedorahosted.org/suds/)
 
 Installation
 ------------
