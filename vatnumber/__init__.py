@@ -28,6 +28,16 @@ def mult_add(i, j):
         res += int(str(mult)[i])
     return res
 
+def mod1110(value):
+    '''
+    Compute ISO 7064, Mod 11,10
+    '''
+    t = 10
+    for i in value:
+        c = int(i)
+        t = (2 * ((t + c) % 10 or 10)) % 11
+    return (11 - t) % 10
+
 def check_vat_at(vat):
     '''
     Check Austria VAT number.
@@ -631,6 +641,21 @@ def check_vat_el(vat):
     Check Greece VAT number.
     '''
     return check_vat_gr(vat)
+
+def check_vat_hr(vat):
+    '''
+    Check Croatia VAT number.
+    '''
+    if len(vat) != 11:
+        return False
+    try:
+        int(vat)
+    except ValueError:
+        return False
+    check = mod1110(vat[:-1])
+    if check != int(vat[10]):
+        return False
+    return True
 
 def check_vat_hu(vat):
     '''
