@@ -128,26 +128,25 @@ def check_vat_cl(rut):
     Check Chile RUT number.
     '''
     try:
-        int(str(rut)[:len(str(rut))-1])
+        int(rut[:-1])
     except ValueError:
         return False
     sum = 0
-    RUTLen = len(str(rut))
-    for i in range (RUTLen - 2, -1, -1):
-        sum += int(str(rut)[i]) * (((RUTLen - 2 - i) % 6) + 2)
+    for i in range(len(rut) - 2, -1, -1):
+        sum += int(rut[i]) * (((len(rut) - 2 - i) % 6) + 2)
     check = 11 - (sum % 11)
     if check == 11:
-        return str(rut)[len(str(rut)) -1] == '0'
+        return rut[-1] == '0'
     elif check == 10:
-        return str(rut)[len(str(rut)) -1].upper() == 'K'
+        return rut[-1].upper() == 'K'
     else:
-        return str(check) == str(rut)[len(str(rut)) -1]
+        return check == int(rut[-1])
 
 def check_vat_co(rut):
     '''
     Check Colombian RUT number.
     '''
-    if len(str(rut)) != 10:
+    if len(rut) != 10:
         return False
     try:
         int(rut)
@@ -155,13 +154,12 @@ def check_vat_co(rut):
         return False
     nums = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71]
     sum = 0
-    RUTLen = len(str(rut))
-    for i in range (RUTLen - 2, -1, -1):
-        sum += int(str(rut)[i]) * nums [RUTLen - 2 - i]
+    for i in range (len(rut) - 2, -1, -1):
+        sum += int(rut[i]) * nums[len(rut) - 2 - i]
     if sum % 11 > 1:
-         return str(rut)[RUTLen - 1] == str(11 - (sum % 11))
+         return int(rut[-1]) == 11 - (sum % 11)
     else:
-         return str(rut)[RUTLen - 1] == str(sum % 11)
+         return int(rut[-1]) == sum % 11
 
 def check_vat_cy(vat):
     '''
