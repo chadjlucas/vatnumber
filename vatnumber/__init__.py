@@ -74,7 +74,7 @@ def check_vat_al(vat):
         int(vat[1:9])
     except ValueError:
         return False
-    if ord(vat[9]) < 65 and ord(vat[9]) > 90:
+    if ord(vat[9]) < 65 or ord(vat[9]) > 90:
         return False
     return True
 
