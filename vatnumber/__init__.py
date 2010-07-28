@@ -296,9 +296,8 @@ def check_vat_cz(vat):
             if int(vat[4:6]) > 31:
                 return False
         if (int(vat[0:2]) + int(vat[2:4]) + int(vat[4:6]) + int(vat[6:8]) +
-                int(vat[8:10])) % 11 != 0:
-            return False
-        if int(vat[0:10]) % 11 != 0:
+                int(vat[8:10])) % 11 != 0 \
+                or int(vat[0:10]) % 11 != 0:
             return False
     return True
 
