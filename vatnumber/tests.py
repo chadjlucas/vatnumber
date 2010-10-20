@@ -169,6 +169,7 @@ VAT_NUMBERS = [
     ('SK', '2021853504', True),
     ('SM', '12345', True),
     ('UA', '12345678', True),
+    ('', '12456789', False),
 ]
 
 VIES_NUMBERS = [

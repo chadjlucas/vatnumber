@@ -1165,7 +1165,11 @@ def check_vat(vat):
     '''
     code = vat[:2].lower()
     number = vat[2:]
-    return globals()['check_vat_%s' % code](number)
+    try:
+        checker = globals()['check_vat_%s' % code]
+    except KeyError:
+        return False
+    return checker(number)
 
 def check_vies(vat):
     '''
