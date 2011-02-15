@@ -7,7 +7,7 @@ http://en.wikipedia.org/wiki/Vat_number
 '''
 
 __version__ = '0.9'
-VIES_URL='http://ec.europa.eu/taxation_customs/vies/services/checkVatService.wsdl'
+VIES_URL='http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl'
 
 def countries():
     '''
