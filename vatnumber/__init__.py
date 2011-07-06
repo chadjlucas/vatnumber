@@ -737,11 +737,8 @@ def check_vat_it(vat):
         return False
     if int(vat[0:7]) <= 0:
         return False
-    if int(vat[7:10]) <= 0:
-        return False
-    if int(vat[7:10]) > 100 and int(vat[7:10]) < 120:
-        return False
-    if int(vat[7:10]) > 121:
+    if not((0 <= int(vat[7:10]) <= 100)
+            or int(vat[7:10]) in (120, 121, 888, 999)):
         return False
 
     check_sum = int(vat[0]) + mult_add(2, int(vat[1])) + int(vat[2]) + \
