@@ -1011,7 +1011,7 @@ def check_vat_se(vat):
         int(vat)
     except ValueError:
         return False
-    if int(vat[9:11]) <= 0:
+    if int(vat[10:12]) <= 0:
         return False
 
     check_sum = mult_add(2, int(vat[0])) + int(vat[1]) + \
