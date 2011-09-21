@@ -567,8 +567,6 @@ def check_vat_gb(vat):
 
         if int(vat[3:10]) < 1:
             return False
-        if int(vat[3:10]) > 19999 and int(vat[3:10]) < 1000000:
-            return False
         if int(vat[10:12]) > 97:
             return False
         if len(vat) == 13 and int(vat[12]) != 3:
@@ -587,8 +585,6 @@ def check_vat_gb(vat):
             return False
 
         if int(vat[0:7]) < 1:
-            return False
-        if int(vat[0:7]) > 19999 and int(vat[0:7]) < 1000000:
             return False
         if int(vat[7:9]) > 97:
             return False
