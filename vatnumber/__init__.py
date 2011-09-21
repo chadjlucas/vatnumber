@@ -598,7 +598,7 @@ def check_vat_gb(vat):
         check_sum = 8 * int(vat[0]) + 7 * int(vat[1]) + 6 * int(vat[2]) + \
                 5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
                 2 * int(vat[6]) + 10 * int(vat[7]) + int(vat[8])
-        if int(vat[0:3]) > 100:
+        if int(vat[0:3]) >= 100:
             if check_sum % 97 not in (0, 55, 42):
                 return False
         else:
