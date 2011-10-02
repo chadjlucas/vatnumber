@@ -78,6 +78,23 @@ def check_vat_al(vat):
         return False
     return True
 
+def check_vat_ar(vat):
+    '''
+    Check Argentina VAT number.
+    '''
+    if len(vat) != 11:
+        return False
+    base = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2]
+    aux = 0
+    for i in xrange(10):
+        aux += int(vat[i]) * base[i]
+    aux = 11 - (aux - (int(aux / 11) * 11))
+    if aux == 11:
+        aux = 0
+    if aux == 10:
+        aux = 9
+    return aux == int(vat[10])
+
 def check_vat_be(vat):
     '''
     Check Belgium VAT number.
