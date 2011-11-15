@@ -7,7 +7,8 @@ http://en.wikipedia.org/wiki/Vat_number
 '''
 
 __version__ = '1.0'
-VIES_URL='http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl'
+VIES_URL = 'http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl'
+
 
 def countries():
     '''
@@ -17,6 +18,7 @@ def countries():
             if x.startswith('check_vat_')]
     res.sort()
     return res
+
 
 def mult_add(i, j):
     '''
@@ -28,6 +30,7 @@ def mult_add(i, j):
         res += int(str(mult)[i])
     return res
 
+
 def mod1110(value):
     '''
     Compute ISO 7064, Mod 11,10
@@ -37,6 +40,7 @@ def mod1110(value):
         c = int(i)
         t = (2 * ((t + c) % 10 or 10)) % 11
     return (11 - t) % 10
+
 
 def check_vat_at(vat):
     '''
@@ -62,6 +66,7 @@ def check_vat_at(vat):
         return False
     return True
 
+
 def check_vat_al(vat):
     '''
     Check Albania VAT number.
@@ -77,6 +82,7 @@ def check_vat_al(vat):
     if ord(vat[9]) < 65 or ord(vat[9]) > 90:
         return False
     return True
+
 
 def check_vat_ar(vat):
     '''
@@ -95,6 +101,7 @@ def check_vat_ar(vat):
         aux = 9
     return aux == int(vat[10])
 
+
 def check_vat_be(vat):
     '''
     Check Belgium VAT number.
@@ -111,6 +118,7 @@ def check_vat_be(vat):
             97 - (int(vat[:8]) % 97):
         return False
     return True
+
 
 def check_vat_bg(vat):
     '''
@@ -140,6 +148,7 @@ def check_vat_bg(vat):
         return False
     return True
 
+
 def check_vat_cl(rut):
     '''
     Check Chile RUT number.
@@ -159,6 +168,7 @@ def check_vat_cl(rut):
     else:
         return check == int(rut[-1])
 
+
 def check_vat_co(rut):
     '''
     Check Colombian RUT number.
@@ -171,12 +181,13 @@ def check_vat_co(rut):
         return False
     nums = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71]
     sum = 0
-    for i in range (len(rut) - 2, -1, -1):
+    for i in range(len(rut) - 2, -1, -1):
         sum += int(rut[i]) * nums[len(rut) - 2 - i]
     if sum % 11 > 1:
-         return int(rut[-1]) == 11 - (sum % 11)
+        return int(rut[-1]) == 11 - (sum % 11)
     else:
-         return int(rut[-1]) == sum % 11
+        return int(rut[-1]) == sum % 11
+
 
 def check_vat_cy(vat):
     '''
@@ -220,6 +231,7 @@ def check_vat_cy(vat):
     if check != vat[8]:
         return False
     return True
+
 
 def check_vat_cz(vat):
     '''
@@ -318,6 +330,7 @@ def check_vat_cz(vat):
             return False
     return True
 
+
 def check_vat_de(vat):
     '''
     Check Germany VAT number.
@@ -340,6 +353,7 @@ def check_vat_de(vat):
         return False
     return True
 
+
 def check_vat_dk(vat):
     '''
     Check Denmark VAT number.
@@ -358,6 +372,7 @@ def check_vat_dk(vat):
     if check_sum % 11 != 0:
         return False
     return True
+
 
 def check_vat_ee(vat):
     '''
@@ -378,6 +393,7 @@ def check_vat_ee(vat):
     if check != int(vat[8]):
         return False
     return True
+
 
 def check_vat_es(vat):
     '''
@@ -471,6 +487,7 @@ def check_vat_es(vat):
             return False
         return True
 
+
 def check_vat_fi(vat):
     '''
     Check Finland VAT number.
@@ -492,6 +509,7 @@ def check_vat_fi(vat):
     if check != int(vat[7]):
         return False
     return True
+
 
 def check_vat_fr(vat):
     '''
@@ -539,6 +557,7 @@ def check_vat_fr(vat):
         if mod_x != mod_y:
             return False
         return True
+
 
 def check_vat_gb(vat):
     '''
@@ -620,6 +639,7 @@ def check_vat_gb(vat):
         return True
     return False
 
+
 def check_vat_gr(vat):
     '''
     Check Greece VAT number.
@@ -639,7 +659,7 @@ def check_vat_gr(vat):
             return False
         return True
     elif len(vat) == 9:
-        check_sum = 256 * int(vat[0]) + 128 * int(vat[1]) + 64 * int(vat[2]) + \
+        check_sum = 256 * int(vat[0]) + 128 * int(vat[1]) + 64 * int(vat[2]) +\
                 32 * int(vat[3]) + 16 * int(vat[4]) + 8 * int(vat[5]) + \
                 4 * int(vat[6]) + 2 * int(vat[7])
         check = check_sum % 11
@@ -650,11 +670,13 @@ def check_vat_gr(vat):
         return True
     return False
 
+
 def check_vat_el(vat):
     '''
     Check Greece VAT number.
     '''
     return check_vat_gr(vat)
+
 
 def check_vat_hr(vat):
     '''
@@ -670,6 +692,7 @@ def check_vat_hr(vat):
     if check != int(vat[10]):
         return False
     return True
+
 
 def check_vat_hu(vat):
     '''
@@ -692,6 +715,7 @@ def check_vat_hu(vat):
     if check != int(vat[7]):
         return False
     return True
+
 
 def check_vat_ie(vat):
     '''
@@ -738,6 +762,7 @@ def check_vat_ie(vat):
             return False
         return True
 
+
 def check_vat_it(vat):
     '''
     Check Italy VAT number.
@@ -765,6 +790,7 @@ def check_vat_it(vat):
     if check != int(vat[10]):
         return False
     return True
+
 
 def check_vat_lt(vat):
     '''
@@ -811,6 +837,7 @@ def check_vat_lt(vat):
         return True
     return False
 
+
 def check_vat_lu(vat):
     '''
     Check Luxembourg VAT number.
@@ -827,6 +854,7 @@ def check_vat_lu(vat):
     if check != int(vat[6:8]):
         return False
     return True
+
 
 def check_vat_lv(vat):
     '''
@@ -871,6 +899,7 @@ def check_vat_lv(vat):
             return False
         return True
 
+
 def check_vat_mt(vat):
     '''
     Check Malta VAT number.
@@ -891,6 +920,7 @@ def check_vat_mt(vat):
     if check != int(vat[6:8]):
         return False
     return True
+
 
 def check_vat_nl(vat):
     '''
@@ -919,6 +949,7 @@ def check_vat_nl(vat):
         return False
     return True
 
+
 def check_vat_pl(vat):
     '''
     Check Poland VAT number.
@@ -939,6 +970,7 @@ def check_vat_pl(vat):
     if check != int(vat[9]):
         return False
     return True
+
 
 def check_vat_pt(vat):
     '''
@@ -963,6 +995,7 @@ def check_vat_pt(vat):
     if check != int(vat[8]):
         return False
     return True
+
 
 def check_vat_ro(vat):
     '''
@@ -1014,6 +1047,7 @@ def check_vat_ro(vat):
         return True
     return False
 
+
 def check_vat_se(vat):
     '''
     Check Sweden VAT number.
@@ -1038,6 +1072,7 @@ def check_vat_se(vat):
     if check != int(vat[9]):
         return False
     return True
+
 
 def check_vat_si(vat):
     '''
@@ -1064,6 +1099,7 @@ def check_vat_si(vat):
         return False
     return True
 
+
 def check_vat_sk(vat):
     '''
     Check Slovakia VAT number.
@@ -1083,7 +1119,7 @@ def check_vat_sk(vat):
             return False
 
     if len(vat) == 9:
-        if int(vat[0:2]) > 53 :
+        if int(vat[0:2]) > 53:
             return False
 
     if int(vat[2:4]) < 1:
@@ -1107,6 +1143,7 @@ def check_vat_sk(vat):
             return False
     return True
 
+
 def check_vat_sm(vat):
     '''
     Check San Marino VAT number.
@@ -1118,6 +1155,7 @@ def check_vat_sm(vat):
     except ValueError:
         return False
     return True
+
 
 def check_vat_ua(vat):
     '''
@@ -1131,11 +1169,13 @@ def check_vat_ua(vat):
         return False
     return True
 
+
 def check_vat_uk(vat):
     '''
     Check United Kingdom VAT number.
     '''
     return check_vat_gb(vat)
+
 
 def check_vat_ru(vat):
     '''
@@ -1173,6 +1213,7 @@ def check_vat_ru(vat):
             return False
     return True
 
+
 def check_vat(vat):
     '''
     Check VAT number.
@@ -1184,6 +1225,7 @@ def check_vat(vat):
     except KeyError:
         return False
     return checker(number)
+
 
 def check_vies(vat):
     '''
