@@ -10,6 +10,13 @@ __version__ = '1.0'
 VIES_URL = 'http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl'
 
 
+def _posint(x):
+    value = int(x)
+    if value < 0:
+        raise ValueError('not a positive integer')
+    return value
+
+
 def countries():
     '''
     Return the list of country's codes that have check function
@@ -52,7 +59,7 @@ def check_vat_at(vat):
         return False
     num = vat[1:]
     try:
-        int(num)
+        _posint(num)
     except ValueError:
         return False
     check_sum = int(num[0]) + mult_add(2, int(num[1])) + \
@@ -76,7 +83,7 @@ def check_vat_al(vat):
     if vat[0] not in ('J', 'K'):
         return False
     try:
-        int(vat[1:9])
+        _posint(vat[1:9])
     except ValueError:
         return False
     if ord(vat[9]) < 65 or ord(vat[9]) > 90:
@@ -111,7 +118,7 @@ def check_vat_be(vat):
     if vat[0] != '0':
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[-2:]) != \
@@ -130,7 +137,7 @@ def check_vat_bg(vat):
     if len(vat) != 10:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[0]) in (2, 3) and \
@@ -154,7 +161,7 @@ def check_vat_cl(rut):
     Check Chile RUT number.
     '''
     try:
-        int(rut[:-1])
+        _posint(rut[:-1])
     except ValueError:
         return False
     sum = 0
@@ -176,7 +183,7 @@ def check_vat_co(rut):
     if len(rut) != 10:
         return False
     try:
-        int(rut)
+        _posint(rut)
     except ValueError:
         return False
     nums = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71]
@@ -196,7 +203,7 @@ def check_vat_cy(vat):
     if len(vat) != 9:
         return False
     try:
-        int(vat[:8])
+        _posint(vat[:8])
     except ValueError:
         return False
     num0 = int(vat[0])
@@ -240,7 +247,7 @@ def check_vat_cz(vat):
     if len(vat) not in (8, 9, 10):
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
 
@@ -338,7 +345,7 @@ def check_vat_de(vat):
     if len(vat) != 9:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[0:7]) <= 0:
@@ -361,7 +368,7 @@ def check_vat_dk(vat):
     if len(vat) != 8:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[0]) <= 0:
@@ -381,7 +388,7 @@ def check_vat_ee(vat):
     if len(vat) != 9:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     check_sum = 3 * int(vat[0]) + 7 * int(vat[1]) + 1 * int(vat[2]) + \
@@ -430,7 +437,7 @@ def check_vat_es(vat):
 
     if vat[0] in ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'U', 'V'):
         try:
-            int(vat[1:])
+            _posint(vat[1:])
         except ValueError:
             return False
         check_sum = mult_add(2, int(vat[1])) + int(vat[2]) + \
@@ -445,7 +452,7 @@ def check_vat_es(vat):
         return True
     elif vat[0] in ('N', 'P', 'Q', 'R', 'S', 'W'):
         try:
-            int(vat[1:8])
+            _posint(vat[1:8])
         except ValueError:
             return False
         check_sum = mult_add(2, int(vat[1])) + int(vat[2]) + \
@@ -466,7 +473,7 @@ def check_vat_es(vat):
             check_value = vat[1:8]
 
         try:
-            int(check_value)
+            _posint(check_value)
         except ValueError:
             return False
         check = 1 + (int(check_value) % 23)
@@ -477,7 +484,7 @@ def check_vat_es(vat):
         return True
     else:
         try:
-            int(vat[:8])
+            _posint(vat[:8])
         except ValueError:
             return False
         check = 1 + (int(vat[:8]) % 23)
@@ -495,7 +502,7 @@ def check_vat_fi(vat):
     if len(vat) != 8:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     check_sum = 7 * int(vat[0]) + 9 * int(vat[1]) + 10 * int(vat[2]) + \
@@ -519,13 +526,13 @@ def check_vat_fr(vat):
         return False
 
     try:
-        int(vat[2:11])
+        _posint(vat[2:11])
     except ValueError:
         return False
 
     system = None
     try:
-        int(vat[0:2])
+        _posint(vat[0:2])
         system = 'old'
     except ValueError:
         system = 'new'
@@ -566,7 +573,7 @@ def check_vat_gb(vat):
 
     if len(vat) == 5:
         try:
-            int(vat[2:5])
+            _posint(vat[2:5])
         except ValueError:
             return False
 
@@ -582,7 +589,7 @@ def check_vat_gb(vat):
     elif len(vat) == 11 \
             and vat[0:6] in ('GD8888', 'HA8888'):
         try:
-            int(vat[6:11])
+            _posint(vat[6:11])
         except ValueError:
             return False
         if vat[0:2] == 'GD' \
@@ -597,7 +604,7 @@ def check_vat_gb(vat):
     elif len(vat) in (12, 13) \
             and vat[0:3] in ('000', '001'):
         try:
-            int(vat)
+            _posint(vat)
         except ValueError:
             return False
 
@@ -616,7 +623,7 @@ def check_vat_gb(vat):
         return True
     elif len(vat) in (9, 10, 12):
         try:
-            int(vat)
+            _posint(vat)
         except ValueError:
             return False
 
@@ -645,7 +652,7 @@ def check_vat_gr(vat):
     Check Greece VAT number.
     '''
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if len(vat) == 8:
@@ -685,7 +692,7 @@ def check_vat_hr(vat):
     if len(vat) != 11:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     check = mod1110(vat[:-1])
@@ -701,7 +708,7 @@ def check_vat_hu(vat):
     if len(vat) != 8:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[0]) <= 0:
@@ -726,8 +733,8 @@ def check_vat_ie(vat):
     if (ord(vat[1]) >= 65 and ord(vat[1]) <= 90) \
             or vat[1] in ('+', '*'):
         try:
-            int(vat[0])
-            int(vat[2:7])
+            _posint(vat[0])
+            _posint(vat[2:7])
         except ValueError:
             return False
 
@@ -746,7 +753,7 @@ def check_vat_ie(vat):
         return True
     else:
         try:
-            int(vat[0:7])
+            _posint(vat[0:7])
         except ValueError:
             return False
 
@@ -770,7 +777,7 @@ def check_vat_it(vat):
     if len(vat) != 11:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[0:7]) <= 0:
@@ -797,7 +804,7 @@ def check_vat_lt(vat):
     Check Lithuania VAT number.
     '''
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
 
@@ -845,7 +852,7 @@ def check_vat_lu(vat):
     if len(vat) != 8:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[0:6]) <= 0:
@@ -863,7 +870,7 @@ def check_vat_lv(vat):
     if len(vat) != 11:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[0]) >= 4:
@@ -907,7 +914,7 @@ def check_vat_mt(vat):
     if len(vat) != 8:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
 
@@ -929,8 +936,8 @@ def check_vat_nl(vat):
     if len(vat) != 12:
         return False
     try:
-        int(vat[0:9])
-        int(vat[10:12])
+        _posint(vat[0:9])
+        _posint(vat[10:12])
     except ValueError:
         return False
     if int(vat[0:8]) <= 0:
@@ -957,7 +964,7 @@ def check_vat_pl(vat):
     if len(vat) != 10:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
 
@@ -979,7 +986,7 @@ def check_vat_pt(vat):
     if len(vat) != 9:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
 
@@ -1002,7 +1009,7 @@ def check_vat_ro(vat):
     Check Romania VAT number.
     '''
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
 
@@ -1055,7 +1062,7 @@ def check_vat_se(vat):
     if len(vat) != 12:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[10:12]) <= 0:
@@ -1081,7 +1088,7 @@ def check_vat_si(vat):
     if len(vat) != 8:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if int(vat[0:7]) <= 999999:
@@ -1105,7 +1112,7 @@ def check_vat_sk(vat):
     Check Slovakia VAT number.
     '''
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     if len(vat) not in(9, 10):
@@ -1151,7 +1158,7 @@ def check_vat_sm(vat):
     if len(vat) != 5:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     return True
@@ -1164,7 +1171,7 @@ def check_vat_ua(vat):
     if len(vat) != 8:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
     return True
@@ -1184,7 +1191,7 @@ def check_vat_ru(vat):
     if len(vat) != 10 and len(vat) != 12:
         return False
     try:
-        int(vat)
+        _posint(vat)
     except ValueError:
         return False
 
