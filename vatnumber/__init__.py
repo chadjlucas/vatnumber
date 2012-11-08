@@ -22,7 +22,7 @@ def countries():
     Return the list of country's codes that have check function
     '''
     res = [x.replace('check_vat_', '').upper() for x in globals()
-            if x.startswith('check_vat_')]
+        if x.startswith('check_vat_')]
     res.sort()
     return res
 
@@ -63,9 +63,9 @@ def check_vat_at(vat):
     except ValueError:
         return False
     check_sum = int(num[0]) + mult_add(2, int(num[1])) + \
-            int(num[2]) + mult_add(2, int(num[3])) + \
-            int(num[4]) + mult_add(2, int(num[5])) + \
-            int(num[6])
+        int(num[2]) + mult_add(2, int(num[3])) + \
+        int(num[4]) + mult_add(2, int(num[5])) + \
+        int(num[6])
     check = 10 - ((check_sum + 4) % 10)
     if check == 10:
         check = 0
@@ -144,8 +144,8 @@ def check_vat_bg(vat):
             int(vat[1:2]) != 22:
         return False
     check_sum = 4 * int(vat[0]) + 3 * int(vat[1]) + 2 * int(vat[2]) + \
-            7 * int(vat[3]) + 6 * int(vat[4]) + 5 * int(vat[5]) + \
-            4 * int(vat[6]) + 3 * int(vat[7]) + 2 * int(vat[8])
+        7 * int(vat[3]) + 6 * int(vat[4]) + 5 * int(vat[5]) + \
+        4 * int(vat[6]) + 3 * int(vat[7]) + 2 * int(vat[8])
     check = 11 - (check_sum % 11)
     if check == 11:
         check = 0
@@ -255,8 +255,8 @@ def check_vat_cz(vat):
         if int(vat[0]) not in (0, 1, 2, 3, 4, 5, 6, 7, 8):
             return False
         check_sum = 8 * int(vat[0]) + 7 * int(vat[1]) + 6 * int(vat[2]) + \
-                5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
-                2 * int(vat[6])
+            5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
+            2 * int(vat[6])
         check = 11 - (check_sum % 11)
         if check == 10:
             check = 0
@@ -266,8 +266,8 @@ def check_vat_cz(vat):
             return False
     elif len(vat) == 9 and int(vat[0]) == 6:
         check_sum = 8 * int(vat[1]) + 7 * int(vat[2]) + 6 * int(vat[3]) + \
-                5 * int(vat[4]) + 4 * int(vat[5]) + 3 * int(vat[6]) + \
-                2 * int(vat[7])
+            5 * int(vat[4]) + 4 * int(vat[5]) + 3 * int(vat[6]) + \
+            2 * int(vat[7])
         check = 9 - ((11 - (check_sum % 11)) % 10)
         if check != int(vat[8]):
             return False
@@ -374,8 +374,8 @@ def check_vat_dk(vat):
     if int(vat[0]) <= 0:
         return False
     check_sum = 2 * int(vat[0]) + 7 * int(vat[1]) + 6 * int(vat[2]) + \
-            5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
-            2 * int(vat[6]) + int(vat[7])
+        5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
+        2 * int(vat[6]) + int(vat[7])
     if check_sum % 11 != 0:
         return False
     return True
@@ -392,8 +392,8 @@ def check_vat_ee(vat):
     except ValueError:
         return False
     check_sum = 3 * int(vat[0]) + 7 * int(vat[1]) + 1 * int(vat[2]) + \
-            3 * int(vat[3]) + 7 * int(vat[4]) + 1 * int(vat[5]) + \
-            3 * int(vat[6]) + 7 * int(vat[7])
+        3 * int(vat[3]) + 7 * int(vat[4]) + 1 * int(vat[5]) + \
+        3 * int(vat[6]) + 7 * int(vat[7])
     check = 10 - (check_sum % 10)
     if check == 10:
         check = 0
@@ -441,9 +441,9 @@ def check_vat_es(vat):
         except ValueError:
             return False
         check_sum = mult_add(2, int(vat[1])) + int(vat[2]) + \
-                mult_add(2, int(vat[3])) + int(vat[4]) + \
-                mult_add(2, int(vat[5])) + int(vat[6]) + \
-                mult_add(2, int(vat[7]))
+            mult_add(2, int(vat[3])) + int(vat[4]) + \
+            mult_add(2, int(vat[5])) + int(vat[6]) + \
+            mult_add(2, int(vat[7]))
         check = 10 - (check_sum % 10)
         if check == 10:
             check = 0
@@ -456,9 +456,9 @@ def check_vat_es(vat):
         except ValueError:
             return False
         check_sum = mult_add(2, int(vat[1])) + int(vat[2]) + \
-                mult_add(2, int(vat[3])) + int(vat[4]) + \
-                mult_add(2, int(vat[5])) + int(vat[6]) + \
-                mult_add(2, int(vat[7]))
+            mult_add(2, int(vat[3])) + int(vat[4]) + \
+            mult_add(2, int(vat[5])) + int(vat[6]) + \
+            mult_add(2, int(vat[7]))
         check = 10 - (check_sum % 10)
         check = chr(check + 64)
         if check != vat[8]:
@@ -506,8 +506,8 @@ def check_vat_fi(vat):
     except ValueError:
         return False
     check_sum = 7 * int(vat[0]) + 9 * int(vat[1]) + 10 * int(vat[2]) + \
-            5 * int(vat[3]) + 8 * int(vat[4]) + 4 * int(vat[5]) + \
-            2 * int(vat[6])
+        5 * int(vat[3]) + 8 * int(vat[4]) + 4 * int(vat[5]) + \
+        2 * int(vat[6])
     check = 11 - (check_sum % 11)
     if check == 11:
         check = 0
@@ -616,8 +616,8 @@ def check_vat_gb(vat):
             return False
 
         check_sum = 8 * int(vat[3]) + 7 * int(vat[4]) + 6 * int(vat[5]) + \
-                5 * int(vat[6]) + 4 * int(vat[7]) + 3 * int(vat[8]) + \
-                2 * int(vat[9]) + 10 * int(vat[10]) + int(vat[11])
+            5 * int(vat[6]) + 4 * int(vat[7]) + 3 * int(vat[8]) + \
+            2 * int(vat[9]) + 10 * int(vat[10]) + int(vat[11])
         if check_sum % 97 != 0:
             return False
         return True
@@ -635,8 +635,8 @@ def check_vat_gb(vat):
             return False
 
         check_sum = 8 * int(vat[0]) + 7 * int(vat[1]) + 6 * int(vat[2]) + \
-                5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
-                2 * int(vat[6]) + 10 * int(vat[7]) + int(vat[8])
+            5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
+            2 * int(vat[6]) + 10 * int(vat[7]) + int(vat[8])
         if int(vat[0:3]) >= 100:
             if check_sum % 97 not in (0, 55, 42):
                 return False
@@ -657,8 +657,8 @@ def check_vat_gr(vat):
         return False
     if len(vat) == 8:
         check_sum = 128 * int(vat[0]) + 64 * int(vat[1]) + 32 * int(vat[2]) + \
-                16 * int(vat[3]) + 8 * int(vat[4]) + 4 * int(vat[5]) + \
-                2 * int(vat[6])
+            16 * int(vat[3]) + 8 * int(vat[4]) + 4 * int(vat[5]) + \
+            2 * int(vat[6])
         check = check_sum % 11
         if check == 10:
             check = 0
@@ -667,8 +667,8 @@ def check_vat_gr(vat):
         return True
     elif len(vat) == 9:
         check_sum = 256 * int(vat[0]) + 128 * int(vat[1]) + 64 * int(vat[2]) +\
-                32 * int(vat[3]) + 16 * int(vat[4]) + 8 * int(vat[5]) + \
-                4 * int(vat[6]) + 2 * int(vat[7])
+            32 * int(vat[3]) + 16 * int(vat[4]) + 8 * int(vat[5]) + \
+            4 * int(vat[6]) + 2 * int(vat[7])
         check = check_sum % 11
         if check == 10:
             check = 0
@@ -714,8 +714,8 @@ def check_vat_hu(vat):
     if int(vat[0]) <= 0:
         return False
     check_sum = 9 * int(vat[0]) + 7 * int(vat[1]) + 3 * int(vat[2]) + \
-            1 * int(vat[3]) + 9 * int(vat[4]) + 7 * int(vat[5]) + \
-            3 * int(vat[6])
+        1 * int(vat[3]) + 9 * int(vat[4]) + 7 * int(vat[5]) + \
+        3 * int(vat[6])
     check = 10 - (check_sum % 10)
     if check == 10:
         check = 0
@@ -742,7 +742,7 @@ def check_vat_ie(vat):
             return False
 
         check_sum = 7 * int(vat[2]) + 6 * int(vat[3]) + 5 * int(vat[4]) + \
-                4 * int(vat[5]) + 3 * int(vat[6]) + 2 * int(vat[0])
+            4 * int(vat[5]) + 3 * int(vat[6]) + 2 * int(vat[0])
         check = check_sum % 23
         if check == 0:
             check = 'W'
@@ -758,8 +758,8 @@ def check_vat_ie(vat):
             return False
 
         check_sum = 8 * int(vat[0]) + 7 * int(vat[1]) + 6 * int(vat[2]) + \
-                5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
-                2 * int(vat[6])
+            5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
+            2 * int(vat[6])
         check = check_sum % 23
         if check == 0:
             check = 'W'
@@ -787,10 +787,10 @@ def check_vat_it(vat):
         return False
 
     check_sum = int(vat[0]) + mult_add(2, int(vat[1])) + int(vat[2]) + \
-            mult_add(2, int(vat[3])) + int(vat[4]) + \
-            mult_add(2, int(vat[5])) + int(vat[6]) + \
-            mult_add(2, int(vat[7])) + int(vat[8]) + \
-            mult_add(2, int(vat[9]))
+        mult_add(2, int(vat[3])) + int(vat[4]) + \
+        mult_add(2, int(vat[5])) + int(vat[6]) + \
+        mult_add(2, int(vat[7])) + int(vat[8]) + \
+        mult_add(2, int(vat[9]))
     check = 10 - (check_sum % 10)
     if check == 10:
         check = 0
@@ -812,12 +812,12 @@ def check_vat_lt(vat):
         if int(vat[7]) != 1:
             return False
         check_sum = 1 * int(vat[0]) + 2 * int(vat[1]) + 3 * int(vat[2]) + \
-                4 * int(vat[3]) + 5 * int(vat[4]) + 6 * int(vat[5]) + \
-                7 * int(vat[6]) + 8 * int(vat[7])
+            4 * int(vat[3]) + 5 * int(vat[4]) + 6 * int(vat[5]) + \
+            7 * int(vat[6]) + 8 * int(vat[7])
         if check_sum % 11 == 10:
             check_sum = 3 * int(vat[0]) + 4 * int(vat[1]) + 5 * int(vat[2]) + \
-                    6 * int(vat[3]) + 7 * int(vat[4]) + 8 * int(vat[5]) + \
-                    9 * int(vat[6]) + 1 * int(vat[7])
+                6 * int(vat[3]) + 7 * int(vat[4]) + 8 * int(vat[5]) + \
+                9 * int(vat[6]) + 1 * int(vat[7])
         check = check_sum % 11
         if check == 10:
             check = 0
@@ -828,14 +828,14 @@ def check_vat_lt(vat):
         if int(vat[10]) != 1:
             return False
         check_sum = 1 * int(vat[0]) + 2 * int(vat[1]) + 3 * int(vat[2]) + \
-                4 * int(vat[3]) + 5 * int(vat[4]) + 6 * int(vat[5]) + \
-                7 * int(vat[6]) + 8 * int(vat[7]) + 9 * int(vat[8]) + \
-                1 * int(vat[9]) + 2 * int(vat[10])
+            4 * int(vat[3]) + 5 * int(vat[4]) + 6 * int(vat[5]) + \
+            7 * int(vat[6]) + 8 * int(vat[7]) + 9 * int(vat[8]) + \
+            1 * int(vat[9]) + 2 * int(vat[10])
         if check_sum % 11 == 10:
             check_sum = 3 * int(vat[0]) + 4 * int(vat[1]) + 5 * int(vat[2]) + \
-                    6 * int(vat[3]) + 7 * int(vat[4]) + 8 * int(vat[5]) + \
-                    9 * int(vat[6]) + 1 * int(vat[7]) + 2 * int(vat[8]) + \
-                    3 * int(vat[9]) + 4 * int(vat[10])
+                6 * int(vat[3]) + 7 * int(vat[4]) + 8 * int(vat[5]) + \
+                9 * int(vat[6]) + 1 * int(vat[7]) + 2 * int(vat[8]) + \
+                3 * int(vat[9]) + 4 * int(vat[10])
         check = check_sum % 11
         if check == 10:
             check = 0
@@ -875,9 +875,9 @@ def check_vat_lv(vat):
         return False
     if int(vat[0]) >= 4:
         check_sum = 9 * int(vat[0]) + 1 * int(vat[1]) + 4 * int(vat[2]) + \
-                8 * int(vat[3]) + 3 * int(vat[4]) + 10 * int(vat[5]) + \
-                2 * int(vat[6]) + 5 * int(vat[7]) + 7 * int(vat[8]) + \
-                6 * int(vat[9])
+            8 * int(vat[3]) + 3 * int(vat[4]) + 10 * int(vat[5]) + \
+            2 * int(vat[6]) + 5 * int(vat[7]) + 7 * int(vat[8]) + \
+            6 * int(vat[9])
         if check_sum % 11 == 4 and int(vat[0]) == 9:
             check_sum = check_sum - 45
         if check_sum % 11 == 4:
@@ -922,7 +922,7 @@ def check_vat_mt(vat):
         return False
 
     check_sum = 3 * int(vat[0]) + 4 * int(vat[1]) + 6 * int(vat[2]) + \
-            7 * int(vat[3]) + 8 * int(vat[4]) + 9 * int(vat[5])
+        7 * int(vat[3]) + 8 * int(vat[4]) + 9 * int(vat[5])
     check = 37 - (check_sum % 37)
     if check != int(vat[6:8]):
         return False
@@ -946,8 +946,8 @@ def check_vat_nl(vat):
         return False
 
     check_sum = 9 * int(vat[0]) + 8 * int(vat[1]) + 7 * int(vat[2]) + \
-            6 * int(vat[3]) + 5 * int(vat[4]) + 4 * int(vat[5]) + \
-            3 * int(vat[6]) + 2 * int(vat[7])
+        6 * int(vat[3]) + 5 * int(vat[4]) + 4 * int(vat[5]) + \
+        3 * int(vat[6]) + 2 * int(vat[7])
 
     check = check_sum % 11
     if check == 10:
@@ -969,8 +969,8 @@ def check_vat_pl(vat):
         return False
 
     check_sum = 6 * int(vat[0]) + 5 * int(vat[1]) + 7 * int(vat[2]) + \
-            2 * int(vat[3]) + 3 * int(vat[4]) + 4 * int(vat[5]) + \
-            5 * int(vat[6]) + 6 * int(vat[7]) + 7 * int(vat[8])
+        2 * int(vat[3]) + 3 * int(vat[4]) + 4 * int(vat[5]) + \
+        5 * int(vat[6]) + 6 * int(vat[7]) + 7 * int(vat[8])
     check = check_sum % 11
     if check == 10:
         return False
@@ -994,8 +994,8 @@ def check_vat_pt(vat):
         return False
 
     check_sum = 9 * int(vat[0]) + 8 * int(vat[1]) + 7 * int(vat[2]) + \
-            6 * int(vat[3]) + 5 * int(vat[4]) + 4 * int(vat[5]) + \
-            3 * int(vat[6]) + 2 * int(vat[7])
+        6 * int(vat[3]) + 5 * int(vat[4]) + 4 * int(vat[5]) + \
+        3 * int(vat[6]) + 2 * int(vat[7])
     check = 11 - (check_sum % 11)
     if check == 10 or check == 11:
         check = 0
@@ -1016,8 +1016,8 @@ def check_vat_ro(vat):
     if len(vat) >= 2 and len(vat) <= 10:
         vat = (10 - len(vat)) * '0' + vat
         check_sum = 7 * int(vat[0]) + 5 * int(vat[1]) + 3 * int(vat[2]) + \
-                2 * int(vat[3]) + 1 * int(vat[4]) + 7 * int(vat[5]) + \
-                5 * int(vat[6]) + 3 * int(vat[7]) + 2 * int(vat[8])
+            2 * int(vat[3]) + 1 * int(vat[4]) + 7 * int(vat[5]) + \
+            5 * int(vat[6]) + 3 * int(vat[7]) + 2 * int(vat[8])
         check = (check_sum * 10) % 11
         if check == 10:
             check = 0
@@ -1043,9 +1043,9 @@ def check_vat_ro(vat):
                 return False
 
         check_sum = 2 * int(vat[0]) + 7 * int(vat[1]) + 9 * int(vat[2]) + \
-                1 * int(vat[3]) + 4 * int(vat[4]) + 6 * int(vat[5]) + \
-                3 * int(vat[6]) + 5 * int(vat[7]) + 8 * int(vat[8]) + \
-                2 * int(vat[9]) + 7 * int(vat[10]) + 9 * int(vat[11])
+            1 * int(vat[3]) + 4 * int(vat[4]) + 6 * int(vat[5]) + \
+            3 * int(vat[6]) + 5 * int(vat[7]) + 8 * int(vat[8]) + \
+            2 * int(vat[9]) + 7 * int(vat[10]) + 9 * int(vat[11])
         check = check_sum % 11
         if check == 10:
             check = 1
@@ -1069,10 +1069,10 @@ def check_vat_se(vat):
         return False
 
     check_sum = mult_add(2, int(vat[0])) + int(vat[1]) + \
-            mult_add(2, int(vat[2])) + int(vat[3]) + \
-            mult_add(2, int(vat[4])) + int(vat[5]) + \
-            mult_add(2, int(vat[6])) + int(vat[7]) + \
-            mult_add(2, int(vat[8]))
+        mult_add(2, int(vat[2])) + int(vat[3]) + \
+        mult_add(2, int(vat[4])) + int(vat[5]) + \
+        mult_add(2, int(vat[6])) + int(vat[7]) + \
+        mult_add(2, int(vat[8]))
     check = 10 - (check_sum % 10)
     if check == 10:
         check = 0
@@ -1095,8 +1095,8 @@ def check_vat_si(vat):
         return False
 
     check_sum = 8 * int(vat[0]) + 7 * int(vat[1]) + 6 * int(vat[2]) + \
-            5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
-            2 * int(vat[6])
+        5 * int(vat[3]) + 4 * int(vat[4]) + 3 * int(vat[5]) + \
+        2 * int(vat[6])
     check = 11 - (check_sum % 11)
     if check == 10:
         check = 0
@@ -1197,24 +1197,24 @@ def check_vat_ru(vat):
 
     if len(vat) == 10:
         check_sum = 2 * int(vat[0]) + 4 * int(vat[1]) + 10 * int(vat[2]) + \
-                3 * int(vat[3]) + 5 * int(vat[4]) + 9 * int(vat[5]) + \
-                4 * int(vat[6]) + 6 * int(vat[7]) + 8 * int(vat[8])
+            3 * int(vat[3]) + 5 * int(vat[4]) + 9 * int(vat[5]) + \
+            4 * int(vat[6]) + 6 * int(vat[7]) + 8 * int(vat[8])
         check = check_sum % 11
         if check % 10 != int(vat[9]):
             return False
     else:
         check_sum1 = 7 * int(vat[0]) + 2 * int(vat[1]) + 4 * int(vat[2]) + \
-                10 * int(vat[3]) + 3 * int(vat[4]) + 5 * int(vat[5]) + \
-                9 * int(vat[6]) + 4 * int(vat[7]) + 6 * int(vat[8]) + \
-                8 * int(vat[9])
+            10 * int(vat[3]) + 3 * int(vat[4]) + 5 * int(vat[5]) + \
+            9 * int(vat[6]) + 4 * int(vat[7]) + 6 * int(vat[8]) + \
+            8 * int(vat[9])
         check = check_sum1 % 11
 
         if check != int(vat[10]):
             return False
         check_sum2 = 3 * int(vat[0]) + 7 * int(vat[1]) + 2 * int(vat[2]) + \
-                4 * int(vat[3]) + 10 * int(vat[4]) + 3 * int(vat[5]) + \
-                5 * int(vat[6]) + 9 * int(vat[7]) + 4 * int(vat[8]) + \
-                6 * int(vat[9]) + 8 * int(vat[10])
+            4 * int(vat[3]) + 10 * int(vat[4]) + 3 * int(vat[5]) + \
+            5 * int(vat[6]) + 9 * int(vat[7]) + 4 * int(vat[8]) + \
+            6 * int(vat[9]) + 8 * int(vat[10])
         check = check_sum2 % 11
         if check != int(vat[11]):
             return False
