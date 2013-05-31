@@ -196,7 +196,7 @@ class VatNumberTest(unittest.TestCase):
         '''
         for code, number, result in VAT_NUMBERS:
             if result:
-                test = self.assert_
+                test = self.assertTrue
             else:
                 test = self.assertFalse
             test(vatnumber.check_vat(code + number), code + number)
