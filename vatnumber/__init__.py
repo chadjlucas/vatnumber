@@ -6,7 +6,7 @@ http://sima-pc.com/nif.php
 http://en.wikipedia.org/wiki/Vat_number
 '''
 
-__version__ = '1.0'
+__version__ = '1.1'
 VIES_URL = 'http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl'
 
 
