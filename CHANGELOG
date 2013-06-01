@@ -1,3 +1,4 @@
+Version 1.1 - 2013-06-01
 * Add Python 3 support
 * Add Check Argentina VAT number
 * Fix check for negative integer
