@@ -5,6 +5,7 @@ Check the VAT number depending of the country based on formula from
 http://sima-pc.com/nif.php (dead link, was http://web.archive.org/web/20120118023804/http://sima-pc.com/nif.php)
 http://en.wikipedia.org/wiki/Vat_number
 '''
+from urllib import getproxies
 
 __version__ = '1.2'
 VIES_URL = 'http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl'
@@ -1239,7 +1240,7 @@ def check_vies(vat):
     Check VAT number for EU member state using the SOAP Service
     '''
     from suds.client import Client
-    client = Client(VIES_URL)
+    client = Client(VIES_URL, proxy=getproxies())
     code = vat[:2]
     number = vat[2:]
     res = client.service.checkVat(countryCode=code, vatNumber=number)
