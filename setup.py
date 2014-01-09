@@ -36,6 +36,9 @@ setup(name='vatnumber',
         'Topic :: Software Development :: Libraries :: Python Modules',
         ],
     license='GPL-3',
+    install_requires=[
+        'python-stdnum',
+        ],
     extras_require={
         'suds': ['suds'],
         },
