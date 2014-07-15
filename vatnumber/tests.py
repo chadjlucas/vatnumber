@@ -6,6 +6,10 @@ Unit test for vatnumber
 
 import unittest
 import vatnumber
+try:
+    import suds
+except ImportError:
+    suds = None
 
 VAT_NUMBERS = [
     ('AT', 'U12345675', True),
@@ -194,6 +198,7 @@ class VatNumberTest(unittest.TestCase):
                 test = self.assertFalse
             test(vatnumber.check_vat(code + number), code + number)
 
+    @unittest.skipUnless(suds, 'requires suds')
     def test_vies(self):
         '''
         Test vies
