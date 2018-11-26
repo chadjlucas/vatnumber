@@ -61,7 +61,7 @@ def check_vat_al(vat):
     '''
     if len(vat) != 10:
         return False
-    if vat[0] not in ('J', 'K'):
+    if vat[0] not in ('J', 'K', 'L'):
         return False
     try:
         _posint(vat[1:9])
