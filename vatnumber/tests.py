@@ -183,14 +183,14 @@ VIES_NUMBERS = [
 
 
 class VatNumberTest(unittest.TestCase):
-    '''
+    """
     Test Case for vatnumber
-    '''
+    """
 
     def test_vat_numbers(self):
-        '''
+        """
         Test VAT numbers
-        '''
+        """
         for code, number, result in VAT_NUMBERS:
             if result:
                 test = self.assertTrue
@@ -200,17 +200,18 @@ class VatNumberTest(unittest.TestCase):
 
     @unittest.skipUnless(suds, 'requires suds')
     def test_vies(self):
-        '''
+        """
         Test vies
-        '''
+        """
         for vat in VIES_NUMBERS:
-            self.assert_(vatnumber.check_vies(vat))
+            self.assertTrue(vatnumber.check_vies(vat))
 
     def test_countries(self):
         '''
         Test countries
         '''
         vatnumber.countries()
+
 
 if __name__ == '__main__':
     unittest.main()
