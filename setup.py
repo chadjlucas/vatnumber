@@ -15,7 +15,9 @@ def get_version():
     init = read(os.path.join('vatnumber', '__init__.py'))
     return re.search("__version__ = '([0-9.]*)'", init).group(1)
 
-setup(name='vatnumber',
+
+setup(
+    name='vatnumber',
     version=get_version(),
     author='B2CK',
     author_email='info@b2ck.com',
@@ -42,6 +44,5 @@ setup(name='vatnumber',
     extras_require={
         'suds': ['suds'],
         },
-    test_suite="vatnumber.tests",
-    use_2to3=True,
+    test_suite="vatnumber.tests"
     )
